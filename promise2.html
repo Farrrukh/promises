@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+function first(){
+    var a =new Promise((resolve, reject) => {
+      window.setTimeout(function(){
+          resolve("Hello First")
+      },5000)
+    })
+    return a;
+}
+function Second(){
+    var b=new Promise((resolve,reject)=>{
+        window.setTimeout(function(){
+            resolve("Hello Second")
+        },3000)
+    })
+    return b;
+}
+function third(){
+    var c=new Promise((resolve,reject)=>{
+        window.setTimeout(function(){
+            resolve("Hello Third")
+        },1000)
+    })
+    return c;
+}
+
+
+first().then(data=>{
+    console.log(data);
+    Second().then(data2=>{
+        console.log(data2);
+        third().then(data3=>{
+            console.log(data3);
+        }).catch(error3=>{
+            console.log(error3);
+        })
+    }).catch(error2=>{
+        console.log(error2);
+    })
+
+}).catch(error1=>{
+    console.log(error1);
+    
+})
+</script>
+</html>

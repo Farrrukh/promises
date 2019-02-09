@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+const getFriut=async(name)=>{
+const friut={
+    pineapple:'Pineapple',
+    peach:'Peach',
+    apple:'Apple'
+
+}
+return Promise.resolve(friut[name])
+}
+getFriut('peach').then(console.log)
+
+
+const makesmothe=async()=>{
+const a= await getFriut('pineapple');
+const b=await getFriut('apple');
+return[a,b]
+}
+makesmothe().then(console.log)
+
+const getSmothe2=()=>{
+    return getFriut('pineapple').then(v=>{
+        v=a;
+        return getFriut('apple');
+    })
+    .then(v => [v, a]);
+}
+
+</script>
+</html>
